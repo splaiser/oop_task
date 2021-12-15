@@ -163,21 +163,29 @@ our_lecturer = [best_lecturer, cool_lecturer]
 
 
 def average_course_rate(student_list, course):
-    final_list = []
+    final_dict = {}
     for student in student_list:
-        for key, value in student.average_grades_dict.items():
-            if key == course:
-                final_list.append(value)
-    return sum(final_list) / len(final_list)
+        if course in student.average_grades_dict.keys():
+            final_dict.update([student.average_grades_dict.get(course)])
+    return final_dict
 
 
-def average_lecture_rate(lecturer_list, course):
-    final_list = []
-    for lecturer in lecturer_list:
-        for key, value in lecturer.average_grades_dict.items():
-            if key == course:
-                final_list.append(value)
-    return sum(final_list) / len(final_list)
+# def average_course_rate(student_list, course):
+#     final_list = []
+#     for student in student_list:
+#         for key, value in student.average_grades_dict.items():
+#             if key == course:
+#                 final_list.append(value)
+#     return sum(final_list) / len(final_list)
+#
+#
+# def average_lecture_rate(lecturer_list, course):
+#     final_list = []
+#     for lecturer in lecturer_list:
+#         for key, value in lecturer.average_grades_dict.items():
+#             if key == course:
+#                 final_list.append(value)
+#     return sum(final_list) / len(final_list)
 
 print(average_course_rate(our_students, 'PHP'))
 print(average_lecture_rate(our_lecturer, 'Python'))
